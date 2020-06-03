@@ -15,7 +15,7 @@ import com.xhban.listener.RequestFinishListener;
 public class HttpUtil {
 
 	/**
-	 * »ñÈ¡Í¼Æ¬µØÖ·
+	 * è·å–å›¾ç‰‡åœ°å€
 	 * 
 	 * @param address
 	 * @param listener
@@ -58,10 +58,10 @@ public class HttpUtil {
 	}
 
 	/**
-	 * ÏÂÔØÍ¼Æ¬
+	 * ä¸‹è½½å›¾ç‰‡
 	 * 
-	 * @param address Í¼Æ¬ÍøÖ·
-	 * @param name ÎÄ¼şÃû
+	 * @param address å›¾ç‰‡ç½‘å€
+	 * @param name æ–‡ä»¶å
 	 * @throws IOException
 	 */
 	public static void download(String address, String dir, String name, DownloadFinishListener listener) {
@@ -93,7 +93,7 @@ public class HttpUtil {
 					out.close();
 					in.close();
 				} catch (Exception ex) {
-					// É¾³ıÎ´ÕıÈ·ÏÂÔØµÄÍ¼Æ¬
+					// åˆ é™¤æœªæ­£ç¡®ä¸‹è½½çš„å›¾ç‰‡
 					if (saveFile != null) {
 						saveFile.delete();
 					}

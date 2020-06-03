@@ -17,7 +17,7 @@ public class DownUtil {
 	private static ExecutorService singleExecutor = Executors.newSingleThreadExecutor();
 
 	/**
-	 * ¼ì²éµ±ÌìµÄÏÂÔØÊÇ·ñÒÑ¾­Ö´ĞĞ£¬·ÀÖ¹ÖØ¸´ÏÂÔØ
+	 * æ£€æŸ¥å½“å¤©çš„ä¸‹è½½æ˜¯å¦å·²ç»æ‰§è¡Œï¼Œé˜²æ­¢é‡å¤ä¸‹è½½
 	 * 
 	 * @return
 	 */
@@ -48,36 +48,36 @@ public class DownUtil {
 
 				@Override
 				public void error(Exception ex) {
-					CommUtil.saveLog(FAILED, "ÇëÇóÍ¼Æ¬ÍøÖ·Ê±Òì³£: " + ex.toString());
+					CommUtil.saveLog(FAILED, "è¯·æ±‚å›¾ç‰‡ç½‘å€æ—¶å¼‚å¸¸: " + ex.toString());
 				}
 			});
 			singleExecutor.execute(()-> {
-				//´Ó±¾µØ»ñÈ¡
+				//ä»æœ¬åœ°è·å–
 				FileUtil.download(dir, getFileName());
 			});
 		}
 	}
 
 
-	// ÏÂÔØÍ¼Æ¬
+	// ä¸‹è½½å›¾ç‰‡
 	public static void downPhoto(String picAddress) {
-		//ÊÇ´ÓWeb¶Ë»ñÈ¡
+		//æ˜¯ä»Webç«¯è·å–
 		HttpUtil.download(picAddress, dir, getFileName(), new DownloadFinishListener() {
 
 			@Override
 			public void finish() {
-				CommUtil.saveLog(SUCCEED, "ÏÂÔØ³É¹¦");
+				CommUtil.saveLog(SUCCEED, "ä¸‹è½½æˆåŠŸ");
 			}
 
 			@Override
 			public void error(Exception ex) {
-				CommUtil.saveLog(FAILED, "ÏÂÔØÍ¼Æ¬Ê±Òì³££º " + ex.toString());
+				CommUtil.saveLog(FAILED, "ä¸‹è½½å›¾ç‰‡æ—¶å¼‚å¸¸ï¼š " + ex.toString());
 			}
 		});
 	}
 
 	/**
-	 * »ñÈ¡ÎÄ¼şÃû
+	 * è·å–æ–‡ä»¶å
 	 * @return
 	 */
 	private static String getFileName(){
@@ -90,7 +90,7 @@ public class DownUtil {
 			return "1.jpg";
 		}
 		int fileCount = allFiles.length;
-		// ÎÄ¼ş¼Ğ´æÔÚÍ¼Æ¬,»ñÈ¡×î´óÃû³Æ£¬½«Æä¼Ó1×÷ÎªĞÂÍ¼Æ¬µÄÃû³Æ
+		// æ–‡ä»¶å¤¹å­˜åœ¨å›¾ç‰‡,è·å–æœ€å¤§åç§°ï¼Œå°†å…¶åŠ 1ä½œä¸ºæ–°å›¾ç‰‡çš„åç§°
 		int names[] = new int[fileCount];
 		for (int i = 0; i < fileCount; i++) {
 			String fileName = allFiles[i].getName();

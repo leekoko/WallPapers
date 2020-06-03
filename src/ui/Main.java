@@ -9,7 +9,7 @@ import com.xhban.util.DownUtil;
 
 public class Main {
 
-	//Ã¿¸ô60·ÖÖÓÖØ¸´Ö´ĞĞÒ»´Î£¨ºÁÃëµ¥Î»£©
+	//æ¯éš”60åˆ†é’Ÿé‡å¤æ‰§è¡Œä¸€æ¬¡ï¼ˆæ¯«ç§’å•ä½ï¼‰
 	private static int PEROID = 60 * 60 * 1000;
 
 
@@ -18,22 +18,22 @@ public class Main {
 	}
 
 	public static void downloadTimer() {
-		// ÉèÖÃÖ´ĞĞÊ±¼ä
+		// è®¾ç½®æ‰§è¡Œæ—¶é—´
 		Calendar calendar = Calendar.getInstance();
 		int year = calendar.get(Calendar.YEAR);
 		int month = calendar.get(Calendar.MONTH);
-		int day = calendar.get(Calendar.DAY_OF_MONTH);// Ã¿Ìì
+		int day = calendar.get(Calendar.DAY_OF_MONTH);// æ¯å¤©
 		Date date = calendar.getTime();
 		calendar.set(year, month, day, 9, 00, 00);
 		Timer timer = new Timer();
-		// µÚÒ»´ÎÖ´ĞĞ
+		// ç¬¬ä¸€æ¬¡æ‰§è¡Œ
 		TimerTask task = new TimerTask() {
 			@Override
 			public void run() {
 				DownUtil.downWallPaper();
 			}
 		};
-		//¶¨Ê±Ö´ĞĞ
+		//å®šæ—¶æ‰§è¡Œ
 		timer.schedule(task, date, PEROID);
 	}
 }

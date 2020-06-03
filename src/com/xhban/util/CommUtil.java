@@ -16,7 +16,7 @@ public class CommUtil {
 	}
 
 	/**
-	 * 日志记录
+	 * 鏃ュ織璁板綍
 	 */
 	public static void saveLog(int state, String message) {
 		FileOutputStream out = null;
@@ -37,11 +37,11 @@ public class CommUtil {
 			out = new FileOutputStream(file);
 			sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 			String time = sdf.format(date);
-			String log = "时间:" + time + ",  " + message;
+			String log = "鏃堕棿:" + time + ",  " + message;
 			out.write(log.getBytes());
 		} catch (Exception e) {
 		}finally {
-			//删除非今日的日志
+			//鍒犻櫎闈炰粖鏃ョ殑鏃ュ織
 			deleteOtherLog(name);
 			try {
 				out.close();
@@ -53,7 +53,7 @@ public class CommUtil {
 
 
 	/**
-	 * 删除非今日的日志
+	 * 鍒犻櫎闈炰粖鏃ョ殑鏃ュ織
 	 * @param todayFileName
 	 */
 	private static void deleteOtherLog(String todayFileName) {
