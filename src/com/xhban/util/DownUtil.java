@@ -37,19 +37,18 @@ public class DownUtil {
 	public static void downWallPaper() {
 		if (!check()) {
 			String requestAddress = "http://guolin.tech/api/bing_pic";
-			HttpUtil.doGet(requestAddress, new RequestFinishListener() {
+			singleExecutor.execute(()-> {
+				HttpUtil.doGet(requestAddress, new RequestFinishListener() {
+					@Override
+					public void finish(String response) {
+							downPhoto(response);
+					}
 
-				@Override
-				public void finish(String response) {
-					singleExecutor.execute(()-> {
-						downPhoto(response);
-					});
-				}
-
-				@Override
-				public void error(Exception ex) {
-					CommUtil.saveLog(FAILED, "请求图片网址时异常: " + ex.toString());
-				}
+					@Override
+					public void error(Exception ex) {
+						CommUtil.saveLog(FAILED, "请求图片网址时异常: " + ex.toString());
+					}
+				});
 			});
 			singleExecutor.execute(()-> {
 				//从本地获取
